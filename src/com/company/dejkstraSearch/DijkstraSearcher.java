@@ -13,7 +13,7 @@ public class DijkstraSearcher {
         final Map<Nodes, Map<Nodes, Long>> graph,
         final Map<Nodes, Long> costs
     ) {
-        var parents = new HashMap<Nodes, Nodes>();
+        var parents = initParents(graph);
 
         var node = findLowestCostNode(costs);
         while (node != null) {
@@ -30,7 +30,29 @@ public class DijkstraSearcher {
             PROCESSED.add(node);
             node = findLowestCostNode(costs);
         }
+        return resultParents(parents);
+    }
+
+    private static Map<Nodes, Nodes> initParents(
+        final Map<Nodes, Map<Nodes, Long>> graph
+    ) {
+        final var parents = new HashMap<Nodes, Nodes>();
+        graph.forEach((it, neighbors) ->
+            neighbors.keySet().forEach(neighbor -> parents.put(neighbor, it))
+        );
         return parents;
+    }
+
+    private static Map<Nodes, Nodes> resultParents(final Map<Nodes, Nodes> parents) {
+        final var result = new HashMap<Nodes, Nodes>();
+        Nodes node = parents.get(Nodes.END);
+        result.put(Nodes.END, node);
+        while (node != null) {
+            final var curr = node;
+            node = parents.get(node);
+            result.put(curr, node);
+        }
+        return result;
     }
 
     private static Nodes findLowestCostNode(final Map<Nodes, Long> costs) {
