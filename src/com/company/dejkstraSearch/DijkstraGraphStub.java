@@ -1,23 +1,12 @@
 package com.company.dejkstraSearch;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.company.dejkstraSearch.Nodes.*;
 
-public class DejkstraGraphStub {
-
-    public static Map<Nodes, Long> getCosts() {
-        final var map = new HashMap<Nodes, Long>();
-        map.put(A, 5L);
-        map.put(B, 0L);
-        map.put(C, 30L);
-        map.put(D, 35L);
-        map.put(END, Long.MAX_VALUE);
-        return map;
-    }
+public class DijkstraGraphStub {
 
     public static Map<Nodes, Map<Nodes, Long>> getGraph() {
         final var map = new LinkedHashMap<Nodes, Map<Nodes, Long>>();
