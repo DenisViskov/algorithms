@@ -1,6 +1,5 @@
 package com.company.dynamicProgramming;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -35,7 +34,7 @@ public class AttractionSolution {
      * @param attractions
      * @return
      */
-    public static int[][] selectedAttractions(final List<Attraction> attractions) {
+    public static int[][] calculatedAttractions(final List<Attraction> attractions) {
         final var table = new int[attractions.size()][CELLS_BY_DAYS.size()];
 
         for (int attrIndex = 0; attrIndex < table.length; attrIndex++) {
