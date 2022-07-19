@@ -35,7 +35,7 @@ public class AttractionSolution {
      * @param attractions
      * @return
      */
-    public static List<Attraction> selectedAttractions(final List<Attraction> attractions) {
+    public static int[][] selectedAttractions(final List<Attraction> attractions) {
         final var table = new int[attractions.size()][CELLS_BY_DAYS.size()];
 
         for (int attrIndex = 0; attrIndex < table.length; attrIndex++) {
@@ -49,7 +49,7 @@ public class AttractionSolution {
             }
         }
 
-        return Collections.emptyList();
+        return table;
     }
 
     private static void setWhenPreviousAttractionAbsent(
